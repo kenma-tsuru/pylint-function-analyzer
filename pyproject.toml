@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pylint-function-analyzer"
+version = "0.1.0"
+description = ""
+authors = ["panchawat <panchawat.bu@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pylint_function_analyzer", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pylint = "^3.3.2"
+pytest = "^8.3.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest-pylint = "^0.21.0"
+
+[tool.poetry.scripts]
+analyze-functions = "pylint_function_analyzer.analyzer:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest]
+testpaths = ["tests"]
+python_files = "test_*.py"
