@@ -25,7 +25,7 @@ class FunctionReporter(TextReporter):
     def display_reports(self, layout: Section):
         print("\nFunction Analysis Report")
         print("=" * 80)
-        for function_name in self.issues:
+        for function_name in sorted(self.issues.keys()):
             print(f"{function_name}")
             for issue in self.issues[function_name]:
                 print(f"  {issue}")
