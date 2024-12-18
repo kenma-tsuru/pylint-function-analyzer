@@ -1,20 +1,23 @@
-from pylint.lint import Run
 import sys
+from typing import Dict, List
+
+from pylint.lint import Run
+
 from .reporter import FunctionReporter
 
 
-def analyze_file(filepath):
+def analyze_file(filepath) -> List[Dict[str, List[str]]]:
     reporter = FunctionReporter()
-    Run(
+    result = Run(
         [
             filepath,
             "--load-plugins=pylint_function_analyzer",
             "--output-format=function-reporter",
         ],
         reporter=reporter,
-        exit=False,
+        exit=False
     )
-
+    return result.linter.reporter.issues
 
 def main():
     if len(sys.argv) != 2:

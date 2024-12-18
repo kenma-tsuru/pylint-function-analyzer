@@ -1,17 +1,8 @@
-from pylint.checkers import BaseChecker
-from astroid import nodes
 from dataclasses import dataclass
 
-@dataclass
-class FunctionStats:
-    name: str
-    line_no: int
-    args_count: int = 0
-    statements_count: int = 0
-    complexity: int = 0
-    nested_depth: int = 0
-    local_vars: int = 0
-    returns: int = 0
+from astroid import nodes
+from pylint.checkers import BaseChecker
+
 
 class FunctionAnalyzerChecker(BaseChecker):
     name = "function-analyzer"

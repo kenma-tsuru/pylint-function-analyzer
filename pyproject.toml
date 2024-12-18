@@ -10,6 +10,7 @@ packages = [{include = "pylint_function_analyzer", from = "src"}]
 python = "^3.10"
 pylint = "^3.3.2"
 pytest = "^8.3.4"
+isort = "^5.13.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest-pylint = "^0.21.0"

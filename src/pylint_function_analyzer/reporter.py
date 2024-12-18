@@ -1,12 +1,13 @@
 import re
-from pylint.reporters import BaseReporter
-from pylint.message import Message
-from pylint.reporters.ureports.nodes import Section
 from collections import defaultdict
 from typing import Dict, List
 
+from pylint.message import Message
+from pylint.reporters.text import TextReporter
+from pylint.reporters.ureports.nodes import Section
 
-class FunctionReporter(BaseReporter):
+
+class FunctionReporter(TextReporter):
     name = 'function-reporter'
 
     def __init__(self):
@@ -19,8 +20,8 @@ class FunctionReporter(BaseReporter):
         match = re.match(r"Function '([^']+)'", msg.msg)
         if match:
             function_name = match.group(1)
-            self.issues[f"{msg.abspath} : {function_name}"].append(msg.msg)
-
+            self.issues[f"{msg.abspath} : {function_name}"].append(f"({msg.msg_id}) {msg.msg}")
+            
     def display_reports(self, layout: Section):
         print("\nFunction Analysis Report")
         print("=" * 80)
